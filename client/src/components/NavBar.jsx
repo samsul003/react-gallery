@@ -8,14 +8,17 @@ class NavBar extends Component {
     const renderAuthButton = () => {
       if (!isAuthenticated) {
         return (
-          <button className='btn btn-primary btn-sm' onClick={onLogin}>
+          <button className='btn btn-primary btn-sm ml-auto' onClick={onLogin}>
             Login
           </button>
         );
       } else {
         return (
           <React.Fragment>
-            <button className='btn btn-danger btn-sm' onClick={onLogout}>
+            <button
+              className='btn btn-danger btn-sm ml-auto'
+              onClick={onLogout}
+            >
               Logout
             </button>
           </React.Fragment>
