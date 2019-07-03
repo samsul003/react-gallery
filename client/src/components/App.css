@@ -1,0 +1,48 @@
+body {
+  margin: 0;
+  background-color: gray;
+  font-family: 'Menlio', sans-serif;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+img {
+  max-width: 100%;
+  vertical-align: top;
+}
+.navbar {
+  margin-bottom: 30px;
+}
+.home-screen-info {
+  background-color: azure;
+  padding: 20px;
+  border-radius: 2px;
+}
+.thumb-details {
+  max-width: 660px;
+  margin: auto;
+}
+.card--thumb {
+  border-radius: 3px;
+  border: 3px solid darkgray;
+}
+.card-header {
+  padding: 0;
+}
+.filter-controls {
+  background-color: azure;
+  padding: 10px;
+  width: auto;
+  border-radius: 2px;
+  display: flex;
+  justify-content: center;
+}
+/* Button reset: start */
+.btn {
+  border-radius: 1.5px;
+}
+.btn:hover {
+  background-color: #282c34;
+  border-color: #61dafb;
+}
+/* Button reset: end */
