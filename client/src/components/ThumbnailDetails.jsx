@@ -31,7 +31,7 @@ class ThumbnailDetails extends Component {
 
   mapStateToViewModel(item) {
     return {
-      id: item.images[0].id,
+      id: item.id,
       title: item.title,
       description: item.images[0].description,
       views: item.views,
