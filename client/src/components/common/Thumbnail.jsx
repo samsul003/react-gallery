@@ -15,7 +15,7 @@ const Thumbnail = ({ image }) => {
         />
       </NavLink>
       <div className='card-body p-2'>
-        <h5 className='card-title text-center'>
+        <h5 className='card-title text-center text-secondary'>
           {!image.title ? '...Opps no title found :(' : image.title}
         </h5>
       </div>

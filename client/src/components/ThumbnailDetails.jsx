@@ -58,11 +58,11 @@ class ThumbnailDetails extends Component {
             />
           </div>
           <div className='card-body'>
-            <h4 className='card-title'>
+            <p className='card-title text-secondary'>
               <span className='font-weight-bold'>Title: </span>{' '}
               {!image.title ? '...Opps no title found :(' : image.title}
-            </h4>
-            <p className='card-text'>
+            </p>
+            <p className='card-text text-secondary'>
               <span className='font-weight-bold'>Description: </span>
               {!image.description
                 ? '...Opps no description found :('
