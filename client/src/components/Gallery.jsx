@@ -85,28 +85,28 @@ class Gallery extends Component {
     const { sections, sorts, windows, isViral } = this.state;
     return (
       <div className='row filter-controls mb-3'>
-        <div className='col-3'>
+        <div className='col-sm-3'>
           <SelectTag
             name='section'
             options={sections}
             onSelected={this.handleSectionSelection}
           />
         </div>
-        <div className='col-3'>
+        <div className='col-sm-3'>
           <SelectTag
             name='sort'
             options={sorts}
             onSelected={this.handleSortSelection}
           />
         </div>
-        <div className='col-3'>
+        <div className='col-sm-3'>
           <SelectTag
             name='window'
             options={windows}
             onSelected={this.handleWindowSelection}
           />
         </div>
-        <div className='col-3 pt-2'>
+        <div className='col-sm-3 pt-2'>
           <span className='text-secondary font-weight-bold mr-2'>
             Viral Images
           </span>
