@@ -121,7 +121,7 @@ class Gallery extends Component {
     return (
       <div className='row'>
         {images.map(image => (
-          <div key={image.id} className='col mb-3'>
+          <div key={image.id} className='col-sm-3 mb-3'>
             <Thumbnail key={image.id} image={image} />
           </div>
         ))}
