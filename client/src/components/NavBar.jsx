@@ -5,26 +5,6 @@ import { Link } from 'react-router-dom';
 class NavBar extends Component {
   render() {
     const { isAuthenticated, onLogin, onLogout } = this.props;
-    const renderAuthButton = () => {
-      if (!isAuthenticated) {
-        return (
-          <button className='btn btn-primary btn-sm ml-auto' onClick={onLogin}>
-            Login
-          </button>
-        );
-      } else {
-        return (
-          <React.Fragment>
-            <button
-              className='btn btn-danger btn-sm ml-auto'
-              onClick={onLogout}
-            >
-              Logout
-            </button>
-          </React.Fragment>
-        );
-      }
-    };
 
     return (
       <nav className='navbar navbar-expand-lg navbar-light bg-light'>
@@ -35,7 +15,21 @@ class NavBar extends Component {
             Gallery
           </span>
         </Link>
-        {renderAuthButton()}
+        {!isAuthenticated ? (
+          <button className='btn btn-primary btn-sm ml-auto' onClick={onLogin}>
+            Login
+          </button>
+        ) : (
+          <React.Fragment>
+            <Link className='btn btn-success btn-sm ml-auto mr-2' to='/uploads'>
+              Your Photos
+            </Link>
+
+            <button className='btn btn-danger btn-sm' onClick={onLogout}>
+              Logout
+            </button>
+          </React.Fragment>
+        )}
       </nav>
     );
   }
@@ -43,8 +37,8 @@ class NavBar extends Component {
 
 NavBar.propTypes = {
   isAuthenticated: PropTypes.bool,
-  onLogin: PropTypes.func,
-  onLogout: PropTypes.func,
+  onLogin: PropTypes.func.isRequired,
+  onLogout: PropTypes.func.isRequired,
 };
 
 export default NavBar;

@@ -4,27 +4,35 @@ import { NavLink } from 'react-router-dom';
 
 import ImageTag from './ImageTag';
 
-const Thumbnail = ({ image }) => {
+const Thumbnail = ({ image, path, disabled }) => {
   return (
-    <div id={image.id} className='card card--thumb'>
-      <NavLink to={`gallery/${image.id}`} className='card-img-top text-center'>
+    <figure id={image.id} className='image-thumbnail'>
+      {!disabled ? (
+        <React.Fragment>
+          <NavLink to={`${path}/${image.id}`}>
+            <ImageTag
+              imageUrl={`https://i.imgur.com/${image.cover || image.id}.png`}
+              info={image.title}
+            />
+          </NavLink>
+          <figcaption className='img-caption text-secondary'>
+            {!image.title ? '...Opps no title found :(' : image.title}
+          </figcaption>
+        </React.Fragment>
+      ) : (
         <ImageTag
-          imageUrl={`https://i.imgur.com/${image.cover}.png`}
+          imageUrl={`https://i.imgur.com/${image.cover || image.id}.png`}
           info={image.title}
-          className='img-thumbnail'
         />
-      </NavLink>
-      <div className='card-body p-2'>
-        <h5 className='card-title text-center text-secondary'>
-          {!image.title ? '...Opps no title found :(' : image.title}
-        </h5>
-      </div>
-    </div>
+      )}
+    </figure>
   );
 };
 
 Thumbnail.propTypes = {
-  image: PropTypes.object,
+  image: PropTypes.object.isRequired,
+  path: PropTypes.string,
+  disabled: PropTypes.string,
 };
 
 export default Thumbnail;

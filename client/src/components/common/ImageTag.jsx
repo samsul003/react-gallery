@@ -6,7 +6,7 @@ const ImageTag = ({ imageUrl, info }) => {
 };
 
 ImageTag.propTypes = {
-  imageUrl: PropTypes.string,
+  imageUrl: PropTypes.string.isRequired,
   info: PropTypes.string,
 };
 

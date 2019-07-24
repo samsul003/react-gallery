@@ -28,10 +28,27 @@ function fetchImagesWithWindowParam(window, qs) {
   return http.get(`/3/gallery/hot/${window}?showViral=${qs}`, options);
 }
 
+function uploadImages(images) {
+  const imagesRef = Array.from(images).map(image => {
+    const imageData = new FormData();
+    imageData.append('image', image);
+
+    return http.post(`/3/image`, imageData, options);
+  });
+
+  return Promise.all(imagesRef);
+}
+
+function fetchPersonalImages() {
+  return http.get(`/3/account/me/images`, options);
+}
+
 export default {
   fetchImageWithId,
   fetchImages,
   fetchImagesWithSectionParam,
   fetchImagesWithSortParam,
   fetchImagesWithWindowParam,
+  uploadImages,
+  fetchPersonalImages,
 };

@@ -21,9 +21,9 @@ const SelectTag = ({ name, options, onSelected }) => {
 };
 
 SelectTag.propTypes = {
-  name: PropTypes.string,
-  options: PropTypes.array,
-  onSelected: PropTypes.func,
+  name: PropTypes.string.isRequired,
+  options: PropTypes.array.isRequired,
+  onSelected: PropTypes.func.isRequired,
 };
 
 export default SelectTag;

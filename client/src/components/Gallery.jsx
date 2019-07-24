@@ -35,20 +35,20 @@ class Gallery extends Component {
   async componentDidMount() {
     const { isSection, isSort, isWindow } = this.state;
     if (isSection) {
-      this.handleSectionSelection();
+      await this.handleSectionSelection();
     } else if (isSort) {
-      this.handleSortSelection();
+      await this.handleSortSelection();
     } else if (isWindow) {
-      this.handleWindowSelection();
+      await this.handleWindowSelection();
     } else {
-      this.popultaeDefaultGallery();
+      await this.populateDefaultGallery();
     }
   }
 
-  popultaeDefaultGallery = async () => {
+  async populateDefaultGallery() {
     const { data: album } = await galleryService.fetchImages();
     this.setState({ images: album.data });
-  };
+  }
 
   handleViralToggle = () => {
     this.setState({ isViral: !this.state.isViral });
@@ -81,60 +81,48 @@ class Gallery extends Component {
     this.setState({ images: album.data, isWindow: !isWindow });
   };
 
-  renderFilterControls = () => {
-    const { sections, sorts, windows, isViral } = this.state;
-    return (
-      <div className='row filter-controls mb-3'>
-        <div className='col-sm-3'>
-          <SelectTag
-            name='section'
-            options={sections}
-            onSelected={this.handleSectionSelection}
-          />
-        </div>
-        <div className='col-sm-3'>
-          <SelectTag
-            name='sort'
-            options={sorts}
-            onSelected={this.handleSortSelection}
-          />
-        </div>
-        <div className='col-sm-3'>
-          <SelectTag
-            name='window'
-            options={windows}
-            onSelected={this.handleWindowSelection}
-          />
-        </div>
-        <div className='col-sm-3 pt-2'>
-          <span className='text-secondary font-weight-bold mr-2'>
-            Viral Images
-          </span>
-          <ToggleSwitch isViral={isViral} onToggle={this.handleViralToggle} />
-        </div>
-      </div>
-    );
-  };
-
-  renderThumbnails = () => {
-    const { images } = this.state;
-    return (
-      <div className='row'>
-        {images.map(image => (
-          <div key={image.id} className='col-sm-3 mb-3'>
-            <Thumbnail key={image.id} image={image} />
-          </div>
-        ))}
-      </div>
-    );
-  };
-
   render() {
+    const { images, sections, sorts, windows, isViral } = this.state;
+
     return (
       <React.Fragment>
-        {this.renderFilterControls()}
+        <div className='row controls-nav'>
+          <div className='col-sm-3'>
+            <SelectTag
+              name='section'
+              options={sections}
+              onSelected={this.handleSectionSelection}
+            />
+          </div>
+          <div className='col-sm-3'>
+            <SelectTag
+              name='sort'
+              options={sorts}
+              onSelected={this.handleSortSelection}
+            />
+          </div>
+          <div className='col-sm-3'>
+            <SelectTag
+              name='window'
+              options={windows}
+              onSelected={this.handleWindowSelection}
+            />
+          </div>
+          <div className='col-sm-3 pt-2'>
+            <span className='text-secondary font-weight-bold mr-2'>
+              Viral Images
+            </span>
+            <ToggleSwitch isViral={isViral} onToggle={this.handleViralToggle} />
+          </div>
+        </div>
 
-        {this.renderThumbnails()}
+        <div className='row'>
+          {images.map(image => (
+            <div key={image.id} className='col-sm-3 m-auto'>
+              <Thumbnail key={image.id} image={image} path='gallery' />
+            </div>
+          ))}
+        </div>
       </React.Fragment>
     );
   }

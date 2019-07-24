@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
 
 import galleryService from '../api/galleryService';
 import ImageTag from './common/ImageTag';
-import { NavLink } from 'react-router-dom';
 
 class ThumbnailDetails extends Component {
   state = {
@@ -49,10 +49,14 @@ class ThumbnailDetails extends Component {
         <NavLink to='/gallery' className='btn btn-sm btn-light mb-2'>
           <i className='fa fa-arrow-left'> back</i>
         </NavLink>
-        <div className='card card--thumb mb-5'>
+        <div className='card mb-5 image-thumbnail'>
           <div className='card-header card-img-top text-center'>
             <ImageTag
-              imageUrl={`https://i.imgur.com/${image.coverImage}.png`}
+              imageUrl={
+                image.coverImage
+                  ? `https://i.imgur.com/${image.coverImage}.png`
+                  : `https://i.imgur.com/${image.id}.png`
+              }
               info={image.title}
               className='img-thumbnail'
             />
