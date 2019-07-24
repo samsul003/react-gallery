@@ -48,7 +48,7 @@ class Uploads extends Component {
         <div className='row'>
           {images.map(image => (
             <div key={image.id} className='col-sm-4 m-auto'>
-              <Thumbnail key={image.id} image={image} disabled='true' />
+              <Thumbnail key={image.id} image={image} disableCaption='true' />
             </div>
           ))}
         </div>

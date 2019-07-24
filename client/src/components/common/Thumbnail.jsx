@@ -4,10 +4,10 @@ import { NavLink } from 'react-router-dom';
 
 import ImageTag from './ImageTag';
 
-const Thumbnail = ({ image, path, disabled }) => {
+const Thumbnail = ({ image, path, disableCaption }) => {
   return (
     <figure id={image.id} className='image-thumbnail'>
-      {!disabled ? (
+      {!disableCaption ? (
         <React.Fragment>
           <NavLink to={`${path}/${image.id}`}>
             <ImageTag
