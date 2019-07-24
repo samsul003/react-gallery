@@ -46,9 +46,11 @@ class ThumbnailDetails extends Component {
     const { image } = this.state;
     return (
       <div className='container thumb-details'>
-        <NavLink to='/gallery' className='btn btn-sm btn-light mb-2'>
-          <i className='fa fa-arrow-left'> back</i>
-        </NavLink>
+        <div>
+          <NavLink to='/gallery' className='btn btn-sm btn-light mb-2'>
+            <i className='fa fa-arrow-left'> back</i>
+          </NavLink>
+        </div>
         <div className='card mb-5 image-thumbnail'>
           <div className='card-header card-img-top text-center'>
             <ImageTag
